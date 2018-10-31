@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Elatsticsearc.Demo", "Net.Elatsticsearc.Demo\Net.Elatsticsearc.Demo.csproj", "{80CB8B59-252A-4C6B-87BF-B1614ABC0D64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nest.Elasticserarh.Api.Client", "Nest.Elasticserarh.Api.Client\Nest.Elasticserarh.Api.Client.csproj", "{05427EDE-77F3-405B-82CB-C6D80B9A23DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nest.Elasticsearch.Api.Entity", "Nest.Elasticsearch.Api.Entity\Nest.Elasticsearch.Api.Entity.csproj", "{33D14812-FBBE-4301-90DC-B0F8FC7C9BC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nest.Elasticsearch.Repository.Imp", "Nest.Elasticsearch.Repository.Imp\Nest.Elasticsearch.Repository.Imp.csproj", "{46B4613E-BE2F-4513-B61D-A4C03D592DDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80CB8B59-252A-4C6B-87BF-B1614ABC0D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80CB8B59-252A-4C6B-87BF-B1614ABC0D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80CB8B59-252A-4C6B-87BF-B1614ABC0D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80CB8B59-252A-4C6B-87BF-B1614ABC0D64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05427EDE-77F3-405B-82CB-C6D80B9A23DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05427EDE-77F3-405B-82CB-C6D80B9A23DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05427EDE-77F3-405B-82CB-C6D80B9A23DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05427EDE-77F3-405B-82CB-C6D80B9A23DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33D14812-FBBE-4301-90DC-B0F8FC7C9BC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33D14812-FBBE-4301-90DC-B0F8FC7C9BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33D14812-FBBE-4301-90DC-B0F8FC7C9BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33D14812-FBBE-4301-90DC-B0F8FC7C9BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46B4613E-BE2F-4513-B61D-A4C03D592DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46B4613E-BE2F-4513-B61D-A4C03D592DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46B4613E-BE2F-4513-B61D-A4C03D592DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46B4613E-BE2F-4513-B61D-A4C03D592DDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1CAE169D-73BC-4AD9-A976-0F2C52029A36}
+	EndGlobalSection
+EndGlobal
