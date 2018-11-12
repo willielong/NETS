@@ -1,4 +1,5 @@
-﻿using Nest.Elasticserarh.Api.Client.Helper;
+﻿using Nest.Elasticsearch.Api.Entity;
+using Nest.Elasticserarh.Api.Client.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace Nest.Elasticsearch.Repository.Imp.Base
     {
         public IElasticClient _client = NestApiConnectionPool.Intence.elasticClient;
         public static BaseRepository<T> Intences = new BaseRepository<T>();
-        #region 创建
+
+        #region 创建-索引
 
         /// <summary>
         /// 创建默认的索引
@@ -251,6 +253,52 @@ namespace Nest.Elasticsearch.Repository.Imp.Base
         }
 
         #endregion
+
+        #region 删除-索引
+
+        /// <summary>
+        /// 删除索引
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool DeleteIndex()
+        {
+
+            bool b = false;
+            try
+            {
+                IDeleteIndexResponse response = _client.DeleteIndex(typeof(T).Name.ToLower());
+                b = response.ApiCall.Success;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return b;
+        }
+
+        /// <summary>
+        /// 删除索引
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool DeleteIndex<Tother>() where Tother : class, new()
+        {
+
+            bool b = false;
+            try
+            {
+                IDeleteIndexResponse response = _client.DeleteIndex(typeof(Tother).Name.ToLower());
+                b = response.ApiCall.Success;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return b;
+        }
+
+
+        #endregion
+
         #region 进行数据操作
         /// <summary>
         /// 批量添加数据
@@ -331,7 +379,50 @@ namespace Nest.Elasticsearch.Repository.Imp.Base
             }
             return b;
         }
+
+        /// <summary>
+        /// 更新数据
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public virtual bool Update(T data, string elasticsearchKey=null)
+        {
+            bool b = false;
+            try
+            {
+               
+                DocumentPath<T> documentPath;
+                if (string.IsNullOrEmpty(elasticsearchKey))
+                {
+                    documentPath = new DocumentPath<T>(data);
+                }
+                else
+                {
+                    documentPath = new DocumentPath<T>(elasticsearchKey);
+                }
+                var updateResponse = _client.Update(documentPath, p =>p.Index(typeof(T).Name).Doc(data)).ApiCall.Success;  
+                b = true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return b;
+        }
+
+        /// <summary>
+        /// 根据条件进行编辑数据
+        /// </summary>
+        /// <param name="selector"></param>
+        /// <returns></returns>
+        public virtual bool UpdateQuery(Func<UpdateByQueryDescriptor<T>, IUpdateByQueryRequest> selector)
+        {
+            return _client.UpdateByQuery<T>(selector).ApiCall.Success;
+        }
+
         #endregion
+
         #region 检查elastic属性是否存在的方法块
 
         /// <summary>
@@ -403,6 +494,10 @@ namespace Nest.Elasticsearch.Repository.Imp.Base
             return _client.SourceExists(documentPath, s => s.Index(typeof(T).Name)).Exists;
             //_client.UpdateByQuery()
         }
+
+        #endregion
+
+        #region 更新数据
 
         #endregion
     }

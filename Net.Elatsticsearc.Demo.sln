@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nest.Elasticsearch.Reposito
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nest.Elasticsearch.Core", "Nest.Elasticsearch.Core\Nest.Elasticsearch.Core.csproj", "{D70DC4FB-05BC-49B0-A943-8D7CB3E5F5FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nest.Elasticsearch.Test", "Nest.Elasticsearch.Test\Nest.Elasticsearch.Test.csproj", "{468AADB8-36E0-4E7C-9EB9-2F1D19840134}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D70DC4FB-05BC-49B0-A943-8D7CB3E5F5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D70DC4FB-05BC-49B0-A943-8D7CB3E5F5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D70DC4FB-05BC-49B0-A943-8D7CB3E5F5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{468AADB8-36E0-4E7C-9EB9-2F1D19840134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{468AADB8-36E0-4E7C-9EB9-2F1D19840134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{468AADB8-36E0-4E7C-9EB9-2F1D19840134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{468AADB8-36E0-4E7C-9EB9-2F1D19840134}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

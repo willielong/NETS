@@ -11,7 +11,7 @@ namespace Nest.Elasticsearch.Core.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
+ 
             return View();
         }
     }

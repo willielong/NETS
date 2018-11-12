@@ -55,7 +55,7 @@ namespace Nest.Elasticserarh.Api.Client.Helper
         }
 
         /// <summary>        
-        /// Sets the cert policy.     
+        /// 设置无证书请求https
         /// </summary>  
         public  void SetCertificatePolicy()
         {
@@ -63,9 +63,9 @@ namespace Nest.Elasticserarh.Api.Client.Helper
         }
 
         /// <summary>         
-        /// Remotes the certificate validate.         
+        /// 无证书请求https返回函数         
         /// </summary>        
-        private  bool RemoteCertificateValidate(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors error)
+        private bool RemoteCertificateValidate(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors error)
         {
             // trust any certificate!!!          
             System.Console.WriteLine("Warning, trust any certificate");
