@@ -385,12 +385,12 @@ namespace Nest.Elasticsearch.Repository.Imp.Base
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public virtual bool Update(T data, string elasticsearchKey=null)
+        public virtual bool Update(T data, string elasticsearchKey = null)
         {
             bool b = false;
             try
             {
-               
+
                 DocumentPath<T> documentPath;
                 if (string.IsNullOrEmpty(elasticsearchKey))
                 {
@@ -400,7 +400,48 @@ namespace Nest.Elasticsearch.Repository.Imp.Base
                 {
                     documentPath = new DocumentPath<T>(elasticsearchKey);
                 }
-                var updateResponse = _client.Update(documentPath, p =>p.Index(typeof(T).Name).Doc(data)).ApiCall.Success;  
+                var updateResponse = _client.Update(documentPath, p => p.Index(typeof(T).Name).Doc(data)).ApiCall.Success;
+                b = true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return b;
+        }
+
+        /// <summary>
+        /// 根据条件进行编辑数据-其他类型
+        /// </summary>
+        /// <param name="selector"></param>
+        /// <returns></returns>
+        public virtual bool UpdateQuery<TOther>(Func<UpdateByQueryDescriptor<TOther>, IUpdateByQueryRequest> selector) where TOther : class, new()
+        {
+            return _client.UpdateByQuery<TOther>(selector).ApiCall.Success;
+        }
+
+        /// <summary>
+        /// 更新数据-其他类型
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public virtual bool Update<TOther>(TOther data, string elasticsearchKey = null) where TOther : class, new()
+        {
+            bool b = false;
+            try
+            {
+
+                DocumentPath<TOther> documentPath;
+                if (string.IsNullOrEmpty(elasticsearchKey))
+                {
+                    documentPath = new DocumentPath<TOther>(data);
+                }
+                else
+                {
+                    documentPath = new DocumentPath<TOther>(elasticsearchKey);
+                }
+                var updateResponse = _client.Update(documentPath, p => p.Index(typeof(TOther).Name).Doc(data)).ApiCall.Success;
                 b = true;
             }
             catch (Exception)
@@ -419,6 +460,76 @@ namespace Nest.Elasticsearch.Repository.Imp.Base
         public virtual bool UpdateQuery(Func<UpdateByQueryDescriptor<T>, IUpdateByQueryRequest> selector)
         {
             return _client.UpdateByQuery<T>(selector).ApiCall.Success;
+        }
+
+        /// <summary>
+        /// 删除数据
+        /// </summary>
+        /// <param name="prkey">要删除数据的键值</param>
+        /// <returns></returns>
+        public virtual bool Delete(object prkey)
+        {
+            bool b = false;
+            try
+            {
+                if (DocumentExists(prkey))
+                {
+                    DocumentPath<T> documentPath = new DocumentPath<T>(prkey.ToString());
+                    b = _client.Delete(documentPath, s => s.Index(typeof(T).Name).Type(typeof(T).Name)).ApiCall.Success;
+                }
+                else { b = false; }
+                // b = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return b;
+        }
+
+        /// <summary>
+        /// 根据条件完成删除
+        /// </summary>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public virtual bool DeleteByQuery(Func<DeleteByQueryDescriptor<T>, IDeleteByQueryRequest> func)
+        {
+            return _client.DeleteByQuery<T>(func).ApiCall.Success;
+        }
+
+        /// <summary>
+        /// 删除数据-其他类型
+        /// </summary>
+        /// <param name="prkey">要删除数据的键值</param>
+        /// <returns></returns>
+        public virtual bool Delete<TOther>(object prkey) where TOther : class, new()
+        {
+            bool b = false;
+            try
+            {
+                if (DocumentExists(prkey))
+                {
+                    DocumentPath<TOther> documentPath = new DocumentPath<TOther>(prkey.ToString());
+                    b = _client.Delete(documentPath, s => s.Index(typeof(TOther).Name).Type(typeof(TOther).Name)).ApiCall.Success;
+                }
+                else { b = false; }
+                // b = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return b;
+        }
+
+        /// <summary>
+        /// 根据条件完成删除
+        /// </summary>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public virtual bool DeleteByQuery<TOther>(Func<DeleteByQueryDescriptor<TOther>, IDeleteByQueryRequest> func) where TOther : class, new()
+        {
+            return _client.DeleteByQuery<TOther>(func).ApiCall.Success;
         }
 
         #endregion

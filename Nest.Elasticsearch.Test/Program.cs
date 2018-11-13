@@ -16,7 +16,7 @@ namespace Nest.Elasticsearch.Test
         public static BaseRepository<Company> repository = BaseRepository<Company>.Intences;
         static void Main(string[] args)
         {
-            repository.Update();
+            //repository.Update();
         }
     }
 }
