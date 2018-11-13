@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TOKENHELPER xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TOKENSECRE_KEY>ThousandsOfDoorsOpenLocksAndTensOfThousandsOfLightsAreOn</TOKENSECRE_KEY>
+  <ISSUER>issuer</ISSUER>
+  <AUDIENCE>audience</AUDIENCE>
+  <EXPIRATION>300</EXPIRATION>
+  <AUTHENTICATE_SCHEME>JwtBearer</AUTHENTICATE_SCHEME>
+</TOKENHELPER>
