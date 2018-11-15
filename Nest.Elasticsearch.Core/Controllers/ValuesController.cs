@@ -1,4 +1,5 @@
 ﻿using Nest.Elasticsearch.Api.Entity;
+using Nest.Elasticsearch.Repository.IBase;
 using Nest.Elasticsearch.Repository.Imp.Base;
 using Nest.Elasticserarh.Api.Client.Helper;
 using System;
@@ -12,7 +13,13 @@ namespace Nest.Elasticsearch.Core.Controllers
 {
     public class ValuesController : ApiController
     {
-       private readonly ElasticClient elasticClient = NestApiConnectionPool.Intence.elasticClient;
+        //private readonly ElasticClient elasticClient = NestApiConnectionPool.Intence.elasticClient;
+
+        public IBaseRepository<Company> baseRepository { get; set; }
+        //public ValuesController(IBaseRepository<Company> _baseRepository)
+        //{
+        //    baseRepository = _baseRepository;
+        //}
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -39,30 +46,32 @@ namespace Nest.Elasticsearch.Core.Controllers
         public void Delete(int id)
         {
         }
-      
-        public void Put()
+
+        [HttpGet]
+        public bool Put1()
         {
             Company company = new Company()
             {
-                prekey = 2,
+                prekey = 3,
                 enable = 1,
-                caretor = "(willie)",
+                caretor = "(helie)",
                 crateDate = DateTime.Now,
-                modifier = "(willie)",
+                modifier = "(helie)",
                 modifierDate = DateTime.Now,
                 c_head = "(till)",
                 head = "(gill)",
                 isTree = true,
                 ognId = Guid.NewGuid().ToString(),
                 parentId = "0",
-                ognName = "测试公司01",
+                ognName = "测试公司03",
                 virOgn = 0,
-                sort = 1
+                sort = 2
             };
             // bool b= BaseRepository<Company>.Intences.CreateIndex(company);
-            bool b = BaseRepository<Company>.Intences.Index<Company>(company);
-            b = BaseRepository<Company>.Intences.SourceExists("1HlCv2YBNcxjthOD1TMi");
-            b = BaseRepository<Company>.Intences.DocumentExists("1HlCv2YBNcxjthOD1TMi");
+            bool b = baseRepository.Index<Company>(company);
+            b = baseRepository.SourceExists("1HlCv2YBNcxjthOD1TMi");
+            b = baseRepository.DocumentExists("1HlCv2YBNcxjthOD1TMi");
+            return true;
         }
     }
 }

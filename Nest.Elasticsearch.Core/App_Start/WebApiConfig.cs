@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Workflow.Core.Config;
 
 namespace Nest.Elasticsearch.Core
 {
@@ -13,6 +14,9 @@ namespace Nest.Elasticsearch.Core
 
             // Web API 路由
             config.MapHttpAttributeRoutes();
+            
+            ///接口上注册
+            config.ApiBootstrpper();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -1,4 +1,5 @@
 ﻿using Nest.Elasticsearch.Api.Entity;
+using Nest.Elasticsearch.Repository.IBase;
 using Nest.Elasticserarh.Api.Client.Helper;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace Nest.Elasticsearch.Repository.Imp.Base
 {
-    public class BaseRepository<T> where T : class, new()
+    public class BaseRepository<T>: IBaseRepository<T> where T : class, new()
     {
         public IElasticClient _client = NestApiConnectionPool.Intence.elasticClient;
-        public static BaseRepository<T> Intences = new BaseRepository<T>();
 
         #region 创建-索引
 

@@ -12,8 +12,12 @@
 */
 
 using Autofac;
+using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using log4net;
 using log4net.Config;
+using Nest.Elasticsearch.Repository.IBase;
+using Nest.Elasticsearch.Repository.Imp.Base;
 //using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -23,35 +27,49 @@ using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using System.Web.Http;
+using System.Web.Mvc;
 using Workflow.comm;
 
 namespace Workflow.Core.Config
 {
-    public class AutoFacConfig
+    public static class AutoFacConfig
     {
-        public static IServiceProvider Bootstrpper(HttpConfiguration config)
+        /// <summary>
+        /// 接口注入的方法
+        /// </summary>
+        /// <param name="config"></param>
+        public static void ApiBootstrpper(this HttpConfiguration config)
         {
-            
-            var builder = new ContainerBuilder();//实例化 AutoFac  容器  
-
-            //GetAssmenBlys();
-            ///将项目集注入到到反射集合
-            builder.RegisterAssemblyTypes(GetAssmenBlys())
-                .AsImplementedInterfaces()//表示以接口的方式注入
-                .InstancePerLifetimeScope(); //在一个生命周期域中，每一个依赖或调用创建一个单一的共享的实例，且每一个不同的生命周期域，实例是唯一的，不共享的。
-    //        builder.Populate(services);
-    //        builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>))//单个注入
-    //.InstancePerDependency();
-    //        builder.RegisterGeneric(typeof(WriteRepository<>)).As(typeof(IWriteRepository<>))//单个注入
-    //.InstancePerDependency();
-    //        builder.RegisterGeneric(typeof(ReadRepository<>)).As(typeof(IReadRepository<>))//单个注入
-  .InstancePerDependency();
-            IContainer ApplicationContainer = builder.Build();
-            IServiceProvider serviceProvider = null;
-            
-            return serviceProvider;//第三方IOC接管 core内置DI容器  
+            var builder = GetContainer();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(builder.Build());
         }
 
+        /// <summary>
+        /// 一般网站接口
+        /// </summary>
+        public static void Bootstrpper()
+        {
+            var builder = GetContainer();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(builder.Build()));
+        }
+
+        /// <summary>
+        /// 获取容器
+        /// </summary>
+        /// <returns></returns>
+        private static ContainerBuilder GetContainer()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterAssemblyTypes(GetAssmenBlys())
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope();
+            //builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();注册api控制器
+            builder.RegisterGeneric(typeof(BaseRepository<>)).As(typeof(IBaseRepository<>))//单个注入
+   .InstancePerDependency();
+            return builder;
+        }
         /// <summary>
         /// 返回需要依赖注入的接口
         /// </summary>
@@ -60,7 +78,7 @@ namespace Workflow.Core.Config
         {
             IConfigFile con = new GeneralConfFileOperator();
             Assemblys assembly = new Assemblys();
-            string path = Directory.GetCurrentDirectory() + "\\Config\\Assemblys.xml";
+            string path = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory.ToString(), "Config\\Assemblys.xml");
             assembly = con.ReadConfFile<Assemblys>(path, false);
             //assembly.childs.Add("12312312");
             //assembly.childs.Add("123");

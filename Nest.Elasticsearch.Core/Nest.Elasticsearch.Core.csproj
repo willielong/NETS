@@ -48,6 +48,12 @@
     <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.2.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="Elasticsearch.Net">
       <HintPath>..\Nest.Elasticserarh.Api.Client\lib\Elasticsearch.Net.dll</HintPath>
     </Reference>
@@ -354,6 +360,10 @@
     <ProjectReference Include="..\Nest.Elasticsearch.Repository.Imp\Nest.Elasticsearch.Repository.Imp.csproj">
       <Project>{46b4613e-be2f-4513-b61d-a4c03d592dde}</Project>
       <Name>Nest.Elasticsearch.Repository.Imp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nest.Elasticsearch.Repository\Nest.Elasticsearch.Repository.csproj">
+      <Project>{081bb2be-a0fd-4d41-a261-95313851662e}</Project>
+      <Name>Nest.Elasticsearch.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nest.Elasticserarh.Api.Client\Nest.Elasticserarh.Api.Client.csproj">
       <Project>{05427ede-77f3-405b-82cb-c6d80b9a23df}</Project>
