@@ -50,8 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Company\ICompanyRepository.cs" />
     <Compile Include="IBase\IBaseRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nest.Elasticsearch.Api.Entity\Nest.Elasticsearch.Api.Entity.csproj">
+      <Project>{33D14812-FBBE-4301-90DC-B0F8FC7C9BC7}</Project>
+      <Name>Nest.Elasticsearch.Api.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

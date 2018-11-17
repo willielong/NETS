@@ -1,6 +1,5 @@
 ﻿using Nest.Elasticsearch.Api.Entity;
-using Nest.Elasticsearch.Repository.IBase;
-using Nest.Elasticsearch.Repository.Imp.Base;
+using Nest.Elasticsearch.Services;
 using Nest.Elasticserarh.Api.Client.Helper;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ namespace Nest.Elasticsearch.Core.Controllers
     {
         //private readonly ElasticClient elasticClient = NestApiConnectionPool.Intence.elasticClient;
 
-        public IBaseRepository<Company> baseRepository { get; set; }
+        public ICompanyServices services { get; set; }
         //public ValuesController(IBaseRepository<Company> _baseRepository)
         //{
         //    baseRepository = _baseRepository;
@@ -68,9 +67,9 @@ namespace Nest.Elasticsearch.Core.Controllers
                 sort = 2
             };
             // bool b= BaseRepository<Company>.Intences.CreateIndex(company);
-            bool b = baseRepository.Index<Company>(company);
-            b = baseRepository.SourceExists("1HlCv2YBNcxjthOD1TMi");
-            b = baseRepository.DocumentExists("1HlCv2YBNcxjthOD1TMi");
+            //bool b = baseRepository.Index<Company>(company);
+            //b = baseRepository.SourceExists("1HlCv2YBNcxjthOD1TMi");
+            //b = baseRepository.DocumentExists("1HlCv2YBNcxjthOD1TMi");
             return true;
         }
     }

@@ -4,20 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Nest.Elasticsearch.Api.Entity;
-using Nest.Elasticsearch.Repository.IBase;
+using Nest.Elasticsearch.Services;
 
 namespace Nest.Elasticsearch.Core.Controllers
 {
     public class HomeController : Controller
     {
-        public IBaseRepository<Company> baseRepository { get; set; }
-        //public HomeController()
+        public ICompanyServices services { get; set; }
+        //public HomeController(ICompanyServices _services)
         //{
-        //    //baseRepository = _baseRepository;
+        //    services = _services;
         //}
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
+            services.IndexExist();
             return View();
         }
     }

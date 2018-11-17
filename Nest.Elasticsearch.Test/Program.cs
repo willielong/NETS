@@ -13,7 +13,7 @@ namespace Nest.Elasticsearch.Test
     class Program
     {
         public static ElasticClient elasticClient = NestApiConnectionPool.Intence.elasticClient;
-        public static BaseRepository<Company> repository = BaseRepository<Company>.Intences;
+        //public static BaseRepository<Company> repository = BaseRepository<Company>.Intences;
         static void Main(string[] args)
         {
             //repository.Update();

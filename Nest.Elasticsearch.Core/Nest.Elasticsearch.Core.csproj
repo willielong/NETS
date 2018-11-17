@@ -358,12 +358,20 @@
       <Name>Nest.Elasticsearch.Api.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nest.Elasticsearch.Repository.Imp\Nest.Elasticsearch.Repository.Imp.csproj">
-      <Project>{46b4613e-be2f-4513-b61d-a4c03d592dde}</Project>
+      <Project>{46B4613E-BE2F-4513-B61D-A4C03D592DDE}</Project>
       <Name>Nest.Elasticsearch.Repository.Imp</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nest.Elasticsearch.Repository\Nest.Elasticsearch.Repository.csproj">
-      <Project>{081bb2be-a0fd-4d41-a261-95313851662e}</Project>
+      <Project>{081BB2BE-A0FD-4D41-A261-95313851662E}</Project>
       <Name>Nest.Elasticsearch.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nest.Elasticsearch.Services.Imp\Nest.Elasticsearch.Services.Imp.csproj">
+      <Project>{94503d53-fb56-4a9d-8421-672fd603f581}</Project>
+      <Name>Nest.Elasticsearch.Services.Imp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nest.Elasticsearch.Services\Nest.Elasticsearch.Services.csproj">
+      <Project>{4cd4b20c-4d8f-4b6b-b67c-0180a39265eb}</Project>
+      <Name>Nest.Elasticsearch.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nest.Elasticserarh.Api.Client\Nest.Elasticserarh.Api.Client.csproj">
       <Project>{05427ede-77f3-405b-82cb-c6d80b9a23df}</Project>

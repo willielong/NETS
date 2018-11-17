@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ASSEMBLYS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <CHILDS>Nest.Elasticsearch.Repository.Imp</CHILDS>
+  <CHILDS>Nest.Elasticsearch.Services.Imp</CHILDS>
 </ASSEMBLYS>
