@@ -11,6 +11,7 @@ namespace Nest.Elasticsearch.Core.Controllers
     public class HomeController : Controller
     {
         public ICompanyServices services { get; set; }
+        public IEntiytBase entiytBase { get; set; }
         //public HomeController(ICompanyServices _services)
         //{
         //    services = _services;

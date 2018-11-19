@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Nest.Elasticsearch.Api.Entity
 {
     [ElasticsearchType(Name = "company")]
-    public class Company : EntiytBase
+    public class Company : EntiytBase, IEntiytBase
     {
 
-       
+
         /// <summary>
         /// 组织编号
         /// </summary>
