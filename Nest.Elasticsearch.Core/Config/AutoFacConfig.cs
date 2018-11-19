@@ -41,7 +41,8 @@ namespace Workflow.Core.Config
         public static void ApiBootstrpper(this HttpConfiguration config)
         {
             var builder = GetContainer();
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly())
+                .PropertiesAutowired();//进行属性注入
             config.DependencyResolver = new AutofacWebApiDependencyResolver(builder.Build());
         }
 
@@ -51,7 +52,8 @@ namespace Workflow.Core.Config
         public static void Bootstrpper()
         {
             var builder = GetContainer();
-            builder.RegisterControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly())
+                .PropertiesAutowired();//进行属性注入
             DependencyResolver.SetResolver(new AutofacDependencyResolver(builder.Build()));
         }
 
@@ -63,11 +65,11 @@ namespace Workflow.Core.Config
         {
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(GetAssmenBlys())
+                .PropertiesAutowired()//进行属性注入
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
-            //builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();注册api控制器
             builder.RegisterGeneric(typeof(BaseRepository<>)).As(typeof(IBaseRepository<>))//单个注入
-   .InstancePerDependency();
+           .InstancePerDependency();
             return builder;
         }
         /// <summary>

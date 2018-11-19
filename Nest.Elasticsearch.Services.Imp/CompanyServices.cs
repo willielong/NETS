@@ -11,10 +11,10 @@ namespace Nest.Elasticsearch.Services.Imp
     {
 
         public ICompanyRepository repository { get; set; }
-        public CmopanyServices(ICompanyRepository _repository)
-        {
-            repository = _repository;
-        }
+        //public CmopanyServices(ICompanyRepository _repository)
+        //{
+        //    repository = _repository;
+        //}
 
         public bool IndexExist()
         {
