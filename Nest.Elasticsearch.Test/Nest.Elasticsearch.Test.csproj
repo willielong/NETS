@@ -51,6 +51,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
@@ -63,6 +64,14 @@
     <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
+    <Reference Include="zxing, Version=0.16.4.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.4.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -73,22 +82,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nest.Elasticsearch.Api.Entity\Nest.Elasticsearch.Api.Entity.csproj">
-      <Project>{33d14812-fbbe-4301-90dc-b0f8fc7c9bc7}</Project>
-      <Name>Nest.Elasticsearch.Api.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nest.Elasticsearch.Core\Nest.Elasticsearch.Core.csproj">
-      <Project>{d70dc4fb-05bc-49b0-a943-8d7cb3e5f5fe}</Project>
-      <Name>Nest.Elasticsearch.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nest.Elasticsearch.Repository.Imp\Nest.Elasticsearch.Repository.Imp.csproj">
-      <Project>{46b4613e-be2f-4513-b61d-a4c03d592dde}</Project>
-      <Name>Nest.Elasticsearch.Repository.Imp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nest.Elasticserarh.Api.Client\Nest.Elasticserarh.Api.Client.csproj">
-      <Project>{05427EDE-77F3-405B-82CB-C6D80B9A23DF}</Project>
-      <Name>Nest.Elasticserarh.Api.Client</Name>
-    </ProjectReference>
+    <Content Include="lib\zxing.dll" />
+    <Content Include="lib\zxing.presentation.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
