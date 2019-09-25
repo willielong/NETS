@@ -14,7 +14,7 @@ namespace Nest.Elasticsearch.Core
 
             // Web API 路由
             config.MapHttpAttributeRoutes();
-            
+
             ///接口上注册
             config.ApiBootstrpper();
 
